@@ -110,6 +110,7 @@
 #define INPUT_CODE              96
 #define OUTPUT_CODE             97
 #define SOUND_CODE              98
+#define POW_CODE                99
 
 /* Definicoes dos op codes (binarios em strings) */
 
@@ -138,6 +139,7 @@
 #define DIV             "100011"
 #define INC             "100100"
 #define LMOD            "100101"
+#define POW             "100110"
 
 
 /* Logic Instructions (All should begin with "01"): */
@@ -358,6 +360,7 @@
 #define REG7_STR "R7"
 #define FR_STR   "FR"
 #define SP_STR   "SP"
+#define POW_STR "POW"
 /* #define REGZ_STR "RZ" */
 
 /*

@@ -247,6 +247,7 @@ void DetectarLabels(void)
             case OR_CODE :
             case XOR_CODE :
             case SOUND_CODE:
+            case POW_CODE :
                 parser_SkipUntil(',');
                 parser_SkipUntil(',');
                 parser_SkipUntilEnd();
@@ -2207,6 +2208,29 @@ void MontarInstrucoes(void)
                    ==============
                 */
 
+               case POW_CODE : // pow R1, R2, R3
+                    str_tmp1 = parser_GetItem_s(); /* TIRA O POW */
+                    val1 = BuscaRegistrador(str_tmp1);
+                    free(str_tmp1);
+                    parser_Match(',');
+                    str_tmp2 = parser_GetItem_s();
+                    val2 = BuscaRegistrador(str_tmp2);
+                    free(str_tmp2);
+                    parser_Match(',');
+                    str_tmp3 = parser_GetItem_s();
+                    val3 = BuscaRegistrador(str_tmp3);
+                    free(str_tmp3);
+                    str_tmp1 = ConverteRegistrador(val1);
+                    str_tmp2 = ConverteRegistrador(val2);
+                    str_tmp3 = ConverteRegistrador(val3);
+                    sprintf(str_msg,"%s%s%s%s0",POW,str_tmp1,str_tmp2,str_tmp3);
+                    free(str_tmp1);
+                    free(str_tmp2);
+                    free(str_tmp3);
+                    parser_Write_Inst(str_msg,end_cnt);
+                    end_cnt += 1;
+                    break;
+
                 case STATIC_CODE :
                     aux = RecebeEndereco();
                     if (Look == '+')
@@ -2641,6 +2665,10 @@ int BuscaInstrucao(char * nome)
     else if (strcmp(str_tmp,CALLR_STR) == 0)
     {
         return CALLR_CODE;
+    }
+    else if (strcmp(str_tmp,POW_STR) == 0)
+    {
+        return POW_CODE;   
     }
     else if (strcmp(str_tmp,JMPR_STR) == 0)
     {
