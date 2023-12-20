@@ -139,7 +139,7 @@
 #define DIV             "100011"
 #define INC             "100100"
 #define LMOD            "100101"
-#define POW             "100110"
+#define POW             "101010"
 
 
 /* Logic Instructions (All should begin with "01"): */
@@ -214,6 +214,9 @@
 /* SUB */
 #define SUB_STR                 "SUB"
 #define SUBC_STR                "SUBC"
+
+/* POW */
+#define POW_STR                 "POW"
 
 #define MUL_STR                 "MUL"
 #define DIV_STR                 "DIV"
@@ -360,7 +363,6 @@
 #define REG7_STR "R7"
 #define FR_STR   "FR"
 #define SP_STR   "SP"
-#define POW_STR "POW"
 /* #define REGZ_STR "RZ" */
 
 /*
